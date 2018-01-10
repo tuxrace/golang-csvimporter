@@ -8,5 +8,6 @@ import (
 
 func main() {
 	filename := os.Args[1]
-	customerimporter.Start(filename)
+	domain := os.Args[2]
+	customerimporter.Start(filename, domain)
 }
