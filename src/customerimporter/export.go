@@ -10,7 +10,7 @@ import (
 )
 
 func lookup(record []string) {
-	fmt.Println(record[0])
+	fmt.Println(record)
 }
 
 // Start function
