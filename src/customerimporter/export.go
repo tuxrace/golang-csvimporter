@@ -9,13 +9,18 @@ import (
 	"time"
 )
 
-func lookup(record []string) {
-	fmt.Println(record)
+var count = 0
+
+func lookup(record []string, domain string) {
+	if len(record) > 0 && domain == record[2] {
+		fmt.Println(record)
+	}
+	count++
 }
 
 // Start function
 func Start() {
-	count := 0
+	domain := "gmail.com"
 
 	data, err := os.Open("test.csv")
 	if err != nil {
@@ -26,16 +31,15 @@ func Start() {
 	t0 := time.Now()
 	for {
 		record, err := reader.Read()
-		go lookup(record)
+		go lookup(record, domain)
 		if err == io.EOF {
 			break
 		}
 		if err != nil {
 			fmt.Println(err)
 		}
-		count++
-		//fmt.Println(count)
 	}
 	t1 := time.Now()
 	fmt.Println(t1.Sub(t0))
+	fmt.Println("Number of records ", count)
 }
