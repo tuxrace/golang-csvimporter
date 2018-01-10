@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"os"
 
 	"./customerimporter"
 )
 
 func main() {
-	fmt.Println("Test")
-	customerimporter.Start()
+	filename := os.Args[1]
+	customerimporter.Start(filename)
 }
